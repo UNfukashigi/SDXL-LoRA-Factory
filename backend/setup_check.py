@@ -68,11 +68,12 @@ def check_requirements():
         run_command(f"\"{sys.executable}\" -m pip install -r \"{req_path}\"")
     
     # 2. sd-scripts requirements (Crucial for training)
-    sd_req_path = os.path.join(os.path.dirname(__file__), "sd-scripts", "requirements.txt")
+    sd_scripts_path = os.path.join(os.path.dirname(__file__), "sd-scripts")
+    sd_req_path = os.path.join(sd_scripts_path, "requirements.txt")
     if os.path.exists(sd_req_path):
         print(f"[INFO] Installing sd-scripts requirements from {sd_req_path}...")
-        # Note: We use sys.executable to ensure we use the same environment
-        run_command(f"\"{sys.executable}\" -m pip install -r \"{sd_req_path}\"")
+        # We must run this inside the sd-scripts directory because of "-e ." in requirements.txt
+        run_command(f"\"{sys.executable}\" -m pip install -r \"{sd_req_path}\"", cwd=sd_scripts_path)
     else:
         print("[WARNING] sd-scripts requirements.txt not found. Dependencies might be missing.")
         

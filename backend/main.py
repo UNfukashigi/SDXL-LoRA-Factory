@@ -157,11 +157,13 @@ async def start_training(config: TrainingConfig, script_path: str = ""):
     if config.vae:
         command.append(f"--vae={config.vae}")
     
+    # Common optimizations (--sdpa is built into PyTorch, no extra install needed)
+    command.append("--sdpa")
+    command.append("--cache_latents")
+    
     # Add VRAM optimizations
     if config.vram == "low":
-        command.append("--blocks_to_swap=20")
-    elif config.vram == "balanced":
-        command.append("--blocks_to_swap=10")
+        command.append("--lowram")
 
     training_logs = f"Running command: {' '.join(command)}\n"
     
@@ -309,7 +311,8 @@ async def setup_scripts_task(internal_scripts: str):
                 [sys.executable, "-m", "pip", "install", "-r", req_path],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
-                text=True
+                text=True,
+                cwd=internal_scripts
             )
             await run_and_capture(pip_process, "train")
         else:
