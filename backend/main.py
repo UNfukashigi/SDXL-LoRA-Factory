@@ -1,3 +1,4 @@
+import sys
 import os
 import subprocess
 import threading
@@ -139,7 +140,7 @@ async def start_training(config: TrainingConfig, script_path: str = ""):
 
     # In a real scenario, we would run sd-scripts
     command = [
-        "python", train_script,
+        sys.executable, train_script,
         f"--pretrained_model_name_or_path={config.model}",
         f"--output_dir={config.output_dir}",
         f"--output_name={config.name}",
@@ -208,6 +209,12 @@ async def run_and_capture(process, type):
         # Filter out noisy but harmless warnings
         if "triton not found" in line or "not compatible with the current PyTorch installation" in line:
             continue
+
+        # Detect missing dependencies
+        if "ModuleNotFoundError" in line:
+            missing_module = line.split("named")[-1].strip().replace("'", "")
+            advice = f"\n[ADVICE] ライブラリ '{missing_module}' が不足しているようです。\n[ADVICE] 「学習エンジンの自動取得 / Setup Training Engine」ボタンをクリックして、セットアップをやり直してください。\n"
+            await broadcast_log(advice, type)
             
         await broadcast_log(line, type)
     process.wait()
@@ -388,7 +395,7 @@ async def run_tagger(config: TaggerConfig):
     tagger_script = os.path.join(os.path.dirname(__file__), "bundled_tagger.py")
 
     command = [
-        "python", tagger_script,
+        sys.executable, tagger_script,
         f"--train_data_dir={config.path}"
     ]
     

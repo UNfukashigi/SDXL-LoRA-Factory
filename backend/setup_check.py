@@ -60,12 +60,22 @@ def check_pytorch():
 
 def check_requirements():
     print("[INFO] Checking other dependencies...")
+    
+    # 1. Main backend requirements
     req_path = os.path.join(os.path.dirname(__file__), "requirements.txt")
     if os.path.exists(req_path):
-        # We use --no-deps or just let pip handle it. 
-        # To make it fast/offline, we could skip if certain packages exist, 
-        # but "pip install" is usually fast if everything is already there.
-        run_command(f"python -m pip install -r \"{req_path}\"")
+        print(f"[INFO] Installing backend requirements from {req_path}...")
+        run_command(f"\"{sys.executable}\" -m pip install -r \"{req_path}\"")
+    
+    # 2. sd-scripts requirements (Crucial for training)
+    sd_req_path = os.path.join(os.path.dirname(__file__), "sd-scripts", "requirements.txt")
+    if os.path.exists(sd_req_path):
+        print(f"[INFO] Installing sd-scripts requirements from {sd_req_path}...")
+        # Note: We use sys.executable to ensure we use the same environment
+        run_command(f"\"{sys.executable}\" -m pip install -r \"{sd_req_path}\"")
+    else:
+        print("[WARNING] sd-scripts requirements.txt not found. Dependencies might be missing.")
+        
     return True
 
 if __name__ == "__main__":
