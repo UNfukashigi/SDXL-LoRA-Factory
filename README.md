@@ -9,6 +9,9 @@
 ▼Animaバージョンも公開しています。Anima version is also available.<br>
 [https://github.com/UNfukashigi/Anima-LoRA-Factory](https://github.com/UNfukashigi/Anima-LoRA-Factory)
 
+▼詳しい使い方については、以下の記事をご覧ください。Anima版の説明ですが、基本の使い方は同じです。<br>
+[https://x.com/UNfukashigi/status/2045744319433490449](https://x.com/UNfukashigi/status/2045744319433490449)
+
 ---
 
 <a id="english"></a>
