@@ -1,7 +1,7 @@
 <table>
 	<thead>
     	<tr>
-      		<th style="text-align:center">[English](https://github.com/UNfukashigi/SDXL-LoRA-Factory)</th>
+      		<th style="text-align:center"><a href="https://github.com/UNfukashigi/SDXL-LoRA-Factory">English</a></th>
       		<th style="text-align:center">日本語</th>
     	</tr>
   	</thead>
