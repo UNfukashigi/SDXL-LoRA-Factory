@@ -1,8 +1,10 @@
 # SDXL LoRA Factory
 
+![SDXL LoRA Factory](./sdxl.png)
+
 [English](#english) | [日本語](#japanese)
 
-![SDXL LoRA Factory](./sdxl.png)
+**[Download](https://github.com/UNfukashigi/SDXL-LoRA-Factory/archive/refs/heads/main.zip)**
 
 ---
 
