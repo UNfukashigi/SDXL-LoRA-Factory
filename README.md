@@ -55,7 +55,7 @@ No complex command-line operations required—it supports everything from image 
 
 ## 📝 License
 
-This project is released under the MIT License.
+This project is released under the Apache License 2.0 License.
 
 ---
 
@@ -108,7 +108,7 @@ This project is released under the MIT License.
 
 ## 📝 ライセンス
 
-このプロジェクトは MIT ライセンスの下で公開されています。
+このプロジェクトは Apache License 2.0 ライセンスの下で公開されています。
 
 ---
 
