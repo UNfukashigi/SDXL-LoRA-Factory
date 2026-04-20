@@ -4,7 +4,10 @@
 
 [English](#english) | [日本語](#japanese)
 
-**[Download](https://github.com/UNfukashigi/SDXL-LoRA-Factory/archive/refs/heads/main.zip)**
+**[-Download Files (こちらからダウンロードしてください) -](https://github.com/UNfukashigi/SDXL-LoRA-Factory/archive/refs/heads/main.zip)**
+
+▼Animaバージョンも公開しています。Anima version is also available.<br>
+[https://github.com/UNfukashigi/Anima-LoRA-Factory](https://github.com/UNfukashigi/Anima-LoRA-Factory)
 
 ---
 
