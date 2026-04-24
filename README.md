@@ -14,6 +14,12 @@
 
 ---
 
+<code>4/25 更新（Updated）<br>
+・venv環境をツール内に構築する設計にしました。グローバル環境に影響を与えず、より安心してご利用頂けます。- The design now incorporates a venv environment within the tool. This ensures that it does not affect the global environment and can be used with greater peace of mind.<br>
+・より安定して使えるようにモジュールチェック機能を強化し、自動インストールの機能も強化しました。- The module check function has been enhanced for greater stability, and the automatic installation function has also been improved.</code>
+
+---
+
 <a id="english"></a>
 
 # English
