@@ -157,13 +157,19 @@ async def start_training(config: TrainingConfig, script_path: str = ""):
     if config.vae:
         command.append(f"--vae={config.vae}")
     
-    # Common optimizations (--sdpa is built into PyTorch, no extra install needed)
+    # Common optimizations
     command.append("--sdpa")
     command.append("--cache_latents")
-    
-    # Add VRAM optimizations
+
+    # Add VRAM optimizations based on selected mode
     if config.vram == "low":
         command.append("--lowram")
+        command.append("--cache_latents_to_disk")
+    elif config.vram == "very_low":
+        command.append("--lowram")
+        command.append("--cache_latents_to_disk")
+        command.append("--cache_text_encoder_outputs")
+        command.append("--cache_text_encoder_outputs_to_disk")
 
     training_logs = f"Running command: {' '.join(command)}\n"
     
@@ -291,44 +297,26 @@ async def setup_scripts():
 async def setup_scripts_task(internal_scripts: str):
     import sys
     try:
-        if not os.path.exists(internal_scripts):
-            await broadcast_log("Cloning sd-scripts repository...\n", "train")
-            process = subprocess.Popen(
-                ["git", "clone", "https://github.com/kohya-ss/sd-scripts.git", internal_scripts],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True
-            )
-            await run_and_capture(process, "train")
-            if process.returncode != 0:
-                await broadcast_log("Clone failed.\n", "train")
-                return
-        
-        await broadcast_log("Installing dependencies from requirements.txt...\n", "train")
-        req_path = os.path.join(internal_scripts, "requirements.txt")
-        if os.path.exists(req_path):
-            pip_process = subprocess.Popen(
-                [sys.executable, "-m", "pip", "install", "-r", req_path],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.STDOUT,
-                text=True,
-                cwd=internal_scripts
-            )
-            await run_and_capture(pip_process, "train")
-        else:
-            await broadcast_log("requirements.txt not found.\n", "train")
+        setup_script = os.path.join(os.path.dirname(__file__), "setup_check.py")
+        if not os.path.exists(setup_script):
+            await broadcast_log(f"Error: {setup_script} not found.\n", "train")
+            return
 
-        # Additional vital packages
-        await broadcast_log("Installing core training packages (accelerate, diffusers, etc.)...\n", "train")
-        core_process = subprocess.Popen(
-            [sys.executable, "-m", "pip", "install", "accelerate", "diffusers", "transformers", "ftfy", "albumentations"],
+        process = subprocess.Popen(
+            [sys.executable, setup_script],
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
-            text=True
+            text=True,
+            encoding="utf-8",
+            errors="replace"
         )
-        await run_and_capture(core_process, "train")
+        await run_and_capture(process, "train")
         
-        await broadcast_log("\n--- Setup Fully Completed ---\n", "train")
+        if process.returncode == 0:
+            await broadcast_log("\n--- Setup Fully Completed ---\n", "train")
+        else:
+            await broadcast_log("\n--- Setup Failed. Check logs above. ---\n", "train")
+            
     except Exception as e:
         await broadcast_log(f"Setup Error: {str(e)}\n", "train")
 
@@ -425,4 +413,4 @@ app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8001)

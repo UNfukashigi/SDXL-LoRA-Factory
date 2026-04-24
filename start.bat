@@ -4,6 +4,15 @@ cd /d %~dp0
 
 echo [SDXL LoRA Factory] Initializing...
 
+:: Create virtual environment if it doesn't exist
+if not exist venv\ (
+    echo [INFO] Creating virtual environment venv...
+    python -m venv venv
+)
+
+:: Activate virtual environment
+call venv\Scripts\activate.bat
+
 :: Run setup check
 python backend/setup_check.py
 if %ERRORLEVEL% NEQ 0 (
@@ -15,11 +24,11 @@ if %ERRORLEVEL% NEQ 0 (
 
 echo.
 echo [SDXL LoRA Factory] Starting backend server...
-echo Access the GUI at http://localhost:8000
+echo Access the GUI at http://localhost:8001
 echo.
 
 :: Start browser
-start http://localhost:8000
+start http://localhost:8001
 
 :: Run backend
 cd backend

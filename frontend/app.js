@@ -90,15 +90,25 @@ async function setupScripts() {
         const data = await response.json();
         if (data.status === 'started' || data.status === 'exists') {
             // Poll for completion
+            let attempts = 0;
+            const maxAttempts = 30; // 30 * 3s = 90 seconds timeout
             const interval = setInterval(async () => {
+                attempts++;
                 const checkRes = await fetch('/api/check-scripts');
                 const checkData = await checkRes.json();
+                
                 if (checkData.exists) {
                     clearInterval(interval);
                     btn.innerText = '✅ 取得完了！ (Success)';
                     if (progressText) progressText.innerText = '✅ セットアップが完了しました。 / Setup completed successfully.';
                     checkScriptsStatus(); // Update button UI
                     alert('エンジンの自動取得が完了しました！ / Engine setup completed!');
+                } else if (attempts >= maxAttempts) {
+                    clearInterval(interval);
+                    btn.disabled = false;
+                    btn.innerText = '❌ タイムアウト (Timeout)';
+                    if (progressText) progressText.innerText = '❌ 取得に時間がかかりすぎています。コンソールを確認してください。';
+                    alert('エンジンの確認がタイムアウトしました。');
                 }
             }, 3000);
         } else {
