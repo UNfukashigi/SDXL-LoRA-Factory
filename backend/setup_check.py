@@ -75,7 +75,7 @@ def check_pytorch():
     
     status = get_pytorch_info()
     
-    nightly_cmd = f"\"{sys.executable}\" -m pip install torch==2.13.0.dev20260418+cu130 torchvision --index-url https://download.pytorch.org/whl/nightly/cu130"
+    nightly_cmd = f"\"{sys.executable}\" -m pip install torch==2.13.0.dev20260418+cu130 torchvision==0.27.0.dev20260418+cu130 --index-url https://download.pytorch.org/whl/nightly/cu130"
     stable_cmd = f"\"{sys.executable}\" -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121"
 
     needs_install = False
@@ -137,7 +137,7 @@ if __name__ == "__main__":
             if status in ["NEEDS_UPGRADE", "NO_CUDA", "MISSING"]:
                 print(f"[SETUP] Final verification failed (status: {status}). Re-fixing PyTorch...")
                 if "RTX 50" in gpu_name:
-                    run_command(f"\"{sys.executable}\" -m pip install torch==2.13.0.dev20260418+cu130 torchvision --index-url https://download.pytorch.org/whl/nightly/cu130")
+                    run_command(f"\"{sys.executable}\" -m pip install torch==2.13.0.dev20260418+cu130 torchvision==0.27.0.dev20260418+cu130 --index-url https://download.pytorch.org/whl/nightly/cu130")
                 else:
                     run_command(f"\"{sys.executable}\" -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121")
         
