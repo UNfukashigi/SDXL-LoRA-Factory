@@ -62,7 +62,7 @@ No complex command-line operations required—it supports everything from image 
 
 1. **Setup**:
    - Run `start.bat` to start the server.
-   - Open `http://localhost:8000` in your browser.
+   - Open `http://localhost:8001` in your browser.
    - Click the "Setup Training Engine" button to install dependencies.
 
 2. **Dataset Preparation**:
@@ -115,7 +115,7 @@ This project is released under the Apache License 2.0 License.
 
 1. **セットアップ**:
    - `start.bat` を実行してサーバーを起動します。
-   - ブラウザで `http://localhost:8000` を開きます。
+   - ブラウザで `http://localhost:8001` を開きます。
    - 「学習エンジンの自動取得」ボタンをクリックして、依存関係をセットアップします。
 
 2. **データセット準備**:
