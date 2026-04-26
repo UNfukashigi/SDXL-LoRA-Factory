@@ -14,6 +14,9 @@
 
 ---
 
+<code>4/26 更新（Updated）**v2.2**<br>
+・エラー報告の多かった原因のsd-scriptsを同梱しました。- We've included sd-scripts, which were the cause of many error reports.</code>
+
 <code>4/26 更新（Updated）**v2.1**<br>
 ・エラー報告の多かった原因として、PCのグローバル環境で環境変数PYTHONPATHが設定されている場合について、必ずvenv環境のPythonを利用するように更新しました。- Due to a high number of error reports, we have updated the code to always use the Python environment in a venv environment when the environment variable PYTHONPATH is set in the PC's global environment.</code>
 
@@ -56,14 +59,12 @@ No complex command-line operations required—it supports everything from image 
 - **OS**: Windows 10/11
 - **GPU**: NVIDIA GPU (8GB VRAM or more recommended)
 - **Python**: 3.10 or higher
-- **Git**: Must be installed
 
 ## 🚀 How to Use
 
 1. **Setup**:
    - Run `start.bat` to start the server.
    - Open `http://localhost:8001` in your browser.
-   - Click the "Setup Training Engine" button to install dependencies.
 
 2. **Dataset Preparation**:
    - Select the folder containing the images you want to train.
@@ -109,14 +110,12 @@ This project is released under the Apache License 2.0 License.
 - **OS**: Windows 10/11
 - **GPU**: NVIDIA GPU (VRAM 8GB 以上推奨)
 - **Python**: 3.10 以上
-- **Git**: インストール済みであること
 
 ## 🚀 使い方
 
 1. **セットアップ**:
    - `start.bat` を実行してサーバーを起動します。
    - ブラウザで `http://localhost:8001` を開きます。
-   - 「学習エンジンの自動取得」ボタンをクリックして、依存関係をセットアップします。
 
 2. **データセット準備**:
    - 学習させたい画像が入ったフォルダを選択します。
