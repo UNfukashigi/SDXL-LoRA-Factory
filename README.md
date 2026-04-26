@@ -4,7 +4,7 @@
 
 [English](#english) | [日本語](#japanese)
 
-**[-Download Files (こちらからダウンロードしてください) -](https://github.com/UNfukashigi/SDXL-LoRA-Factory/archive/refs/heads/main.zip)**
+**[Donload SDXL-LoRA-Factory-v2.2.zip](https://github.com/UNfukashigi/SDXL-LoRA-Factory/blob/main/SDXL-LoRA-Factory-v2.2.zip)**
 
 ▼Animaバージョンも公開しています。Anima version is also available.<br>
 [https://github.com/UNfukashigi/Anima-LoRA-Factory](https://github.com/UNfukashigi/Anima-LoRA-Factory)
