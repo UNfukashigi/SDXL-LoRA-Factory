@@ -1,6 +1,6 @@
 # SDXL LoRA Factory
 
-![SDXL LoRA Factory](./sdxl.png)
+![SDXL LoRA Factory](./view.png)
 
 [English](#english) | [日本語](#japanese)
 
