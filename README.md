@@ -148,4 +148,6 @@ This project is released under the Apache License 2.0 License.
 
 ---
 
-Created by [fukachan.jp](https://fukachan.jp/)
+Created by [fukachan.jp](https://fukachan.jp/)<br>
+
+X [https://x.com/UNfukashigi](https://x.com/UNfukashigi)
