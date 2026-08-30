@@ -4,8 +4,6 @@
 
 [English](#english) | [日本語](#japanese)
 
-**[Dwonload](https://github.com/UNfukashigi/SDXL-LoRA-Factory/blob/main/SDXL-LoRA-Factory-v2.2.zip)**
-
 ▼Animaバージョンも公開しています。Anima version is also available.<br>
 [https://github.com/UNfukashigi/Anima-LoRA-Factory](https://github.com/UNfukashigi/Anima-LoRA-Factory)
 
