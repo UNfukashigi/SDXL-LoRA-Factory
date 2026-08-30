@@ -14,6 +14,12 @@
 
 ---
 
+<code>8/31 更新（Updated）**v4.8**<br>
+・RepeatsをUIから設定できるようにしました。デフォルト値は2です。- Added a UI setting for Repeats. The default value is 2.<br>
+・画像枚数 × Repeats × Epochs に基づく推定ステップ数を表示するようにしました。- Added an estimated step count based on image count × Repeats × Epochs.<br>
+・学習の強さと総ステップ数の目安を表示する説明欄を追加しました。- Added a guide explaining training strength and recommended total step ranges.<br>
+・上級設定にDataLoader Workersを追加しました。0が最も安定し、旧バージョンと同じ挙動に近づけたい場合は8に設定できます。- Added DataLoader Workers to Advanced Settings. 0 is the most stable, and 8 is close to the previous version behavior.</code><br>
+
 <code>7/5 更新（Updated）**v4.6.1**<br>
 ・学習中にログ表示用のWebSocket接続が途中で切断され、画面上では学習が停止したように見える場合がある問題への対策として、サーバー側の接続維持設定を調整しました。- Adjusted the server-side connection keep-alive settings to help prevent cases where the WebSocket connection used for training logs disconnects during training, making it appear as if training has stopped on the screen.</code><br>
 
