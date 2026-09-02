@@ -12,6 +12,7 @@
 
 > SDXL版は現在、安定版として公開しています。
 > 今後はANIMA版を中心に開発を継続し、SDXL版は重大な不具合修正や互換性対応を中心に更新します。
+> 修正内容や過去バージョンは、[release](https://github.com/UNfukashigi/SDXL-LoRA-Factory/releases)から確認してください。
 
 ---
 
